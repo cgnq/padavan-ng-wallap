@@ -57,8 +57,8 @@ jobs:
          cd /opt/Btools/LANG_CN/
          sh install_LANG_CN.sh
         #
-        #cd /opt/Btools/Theme/
-        #sh install_Theme.sh
+        cd /opt/Btools/Theme/
+        sh install_Theme.sh
         
         cd /opt/rt-n56u/toolchain
         sudo ./clean_sources.sh
@@ -76,6 +76,15 @@ jobs:
       with:
         name: Padavan-packages
         path: /opt/images
+        
+    - name: 上传到发布
+      uses: softprops/action-gh-release@v1
+      if: steps.tag.outputs.status == 'success' && !cancelled()
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: Padavan-NG
+        files: /opt/images/*
 
     - name: 上传到WeTransfer
       if: always()

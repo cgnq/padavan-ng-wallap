@@ -61,8 +61,9 @@ jobs:
         #sh install_Theme.sh
         
         cd /opt/rt-n56u/toolchain
-        sudo ./clean_sources.sh
-        sudo ./build_toolchain.sh
+        #sudo ./clean_sources.sh
+        #sudo ./build_toolchain.sh
+        sudo ./dl_toolchain.sh
         #
     - name: 构建固件
       run: |

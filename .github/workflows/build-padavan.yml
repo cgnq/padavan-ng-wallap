@@ -62,8 +62,8 @@ jobs:
         
         cd /opt/rt-n56u/toolchain
         sudo ./clean_sources.sh
-        #sudo ./build_toolchain.sh
-        sudo sh dl_toolchain.sh
+        sudo ./build_toolchain.sh
+        #sudo sh dl_toolchain.sh
         #
     - name: 构建固件
       run: |

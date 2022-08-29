@@ -43,7 +43,7 @@ jobs:
         pkg-config zlib1g-dev libgmp3-dev libmpc-dev libmpfr-dev libncurses5-dev libltdl-dev gcc-multilib
     - name: 克隆源码
       run: |
-        git clone -b main --depth=1 https://github.com/monw/padavan-ng.git /opt/rt-n56u
+        git clone -b master --depth=1 https://github.com/monw/padavan-ng.git /opt/rt-n56u
     - name: 自定义修改
       run: |
         sed -i 's/{ "wl_auth_mode", "psk" },/{ "wl_auth_mode", "open" },/g' /opt/rt-n56u/trunk/user/shared/defaults.c
@@ -61,9 +61,9 @@ jobs:
         #sh install_Theme.sh
         
         cd /opt/rt-n56u/toolchain
-        sudo ./clean_sources.sh
-        sudo ./build_toolchain.sh
-        #sudo sh dl_toolchain.sh
+        #sudo ./clean_sources.sh
+        #sudo ./build_toolchain.sh
+        sudo sh dl_toolchain.sh
         #
     - name: 构建固件
       run: |

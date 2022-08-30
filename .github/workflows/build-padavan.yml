@@ -13,6 +13,10 @@ on:
    # - cron: 0 19 * * *
   watch:
     types: [started]
+    
+env:
+  DOWN_TOOLCHAIN: true
+  TOOLCHAIN_URL: https://github.com/hminid/Padavan-ng_MI3_Build/releases/download/V20210510/toolchain_out.tar.gz
 
 jobs:
   build:
@@ -60,11 +64,21 @@ jobs:
         #cd /opt/Btools/Theme/
         #sh install_Theme.sh
         
-        cd /opt/rt-n56u/toolchain
-        #sudo ./clean_sources.sh
-        #sudo ./build_toolchain.sh
-        sudo sh dl_toolchain.sh
-        #
+    - name: 准备工具链
+      run: |
+        if [ $DOWN_TOOLCHAIN = false ] ; then
+           # 构建工具链
+           cd /opt/rt-n56u/toolchain
+           sudo ./clean_sources.sh
+           sudo ./build_toolchain.sh
+         else
+           # 下载预编译的构建工具链
+           cd /opt/rt-n56u/toolchain
+           mkdir -p out
+           wget $TOOLCHAIN_URL -O out.tar.gz
+           tar -zxvf out.tar.gz -C out/
+        fi
+        
     - name: 构建固件
       run: |
         cd /opt/rt-n56u/trunk

@@ -74,9 +74,7 @@ jobs:
          else
            # 下载预编译的构建工具链
            cd /opt/rt-n56u/toolchain
-           mkdir -p out
-           wget $TOOLCHAIN_URL -O out.tar.gz
-           tar -zxvf out.tar.gz -C out/
+           sh dl_toolchain.sh
         fi
         
     - name: 构建固件

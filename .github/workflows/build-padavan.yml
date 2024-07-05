@@ -51,7 +51,7 @@ jobs:
         sed -i 's/{ "wl_auth_mode", "psk" },/{ "wl_auth_mode", "open" },/g' /opt/rt-n56u/trunk/user/shared/defaults.c
         sed -i 's/{ "rt_auth_mode", "psk" },/{ "rt_auth_mode", "open" },/g' /opt/rt-n56u/trunk/user/shared/defaults.c
         sed -i 's/my.router/p.to/g' /opt/rt-n56u/trunk/user/rc/net_wan.c  
-        sed -i '3a\ #define DEF_NTP_SERVER2 "pool.ntp.org" \n#define DEF_NTP_SERVER3 "pool.ntp.org"' /opt/rt-n56u/trunk/user/shared/defaults.c
+        sed -i '22a\ #define DEF_NTP_SERVER2 "pool.ntp.org" \n#define DEF_NTP_SERVER3 "pool.ntp.org"' /opt/rt-n56u/trunk/user/shared/defaults.c
         mkdir -p /opt/images/
         #
         cd /opt/Btools/Setconfig/

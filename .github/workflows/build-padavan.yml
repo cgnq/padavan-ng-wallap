@@ -15,7 +15,7 @@ on:
     types: [started]
     
 env:
-  DOWN_TOOLCHAIN: true
+  DOWN_TOOLCHAIN: false
   TOOLCHAIN_URL: https://github.com/hminid/Padavan-ng_MI3_Build/releases/download/V20210510/toolchain_out.tar.gz
 
 jobs:
